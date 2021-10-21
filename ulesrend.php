@@ -47,35 +47,35 @@ if(!empty($_SESSION["id"]))$en=$_SESSION["id"];
 <?php
 include 'menu.inc.php';
 ?>
-  <table>
+<table>
   <tr> 
-    <th colspan="3">
-       <?php
-         echo $title;
-        ?>
-    </th>                       
-      <th colspan="2">   
-        <?php    
-           if(!empty($_SESSION['id'])){
-              if(in_array($_SESSION['id'],$adminok)){
-         ?>
-            <form action="ulesrend.php" method="post">
-                <select name="hianyzo_id">
-          <?php
-              $result=tanlista($conn);
-            if($result->num_rows >0){
-              while($row=$result->fetch_assoc()){
-                $tanulo->set_user($row['id'], $conn);
-                if($tanulo->get_nev() and !in_array($row['id'],$hianyzok))echo '<option value="'.$row['id'].'">'.$tanulo->get_nev().'</option>';
-              }
-            }
-          ?>
-                </select><br>
-            <input type="submit">
-          <?php
-            }
-            }
-          ?>
+  <th colspan="3">
+    <?php
+      echo $title;
+    ?>
+  </th>                       
+    <th colspan="2">   
+    <?php    
+      if(!empty($_SESSION['id'])){
+        if(in_array($_SESSION['id'],$adminok)){
+    ?>
+     <form action="ulesrend.php" method="post">
+      <select name="hianyzo_id">
+     <?php
+      $result=tanlista($conn);
+        if($result->num_rows >0){
+        while($row=$result->fetch_assoc()){
+          $tanulo->set_user($row['id'], $conn);
+        if($tanulo->get_nev() and !in_array($row['id'],$hianyzok))echo '<option value="'.$row['id'].'">'.$tanulo->get_nev().'</option>';
+        }
+        }
+      ?>
+       </select><br>
+        <input type="submit">
+      <?php
+       }
+       }
+      ?>
             </form>
        </th>
         </tr>

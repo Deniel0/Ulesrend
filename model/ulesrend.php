@@ -29,6 +29,7 @@ class Ulesrend{
     echo "Error: " .$sql . "<br>" . $conn->error;
 }
   }
+  
   //Össze get metódus felépítése
   public function get_nev(){
       return $this->nev;
@@ -45,12 +46,23 @@ class Ulesrend{
       public function get_felhasznalo(){
         return $this->felhasznalo;
       }
+      //tanulók id listáját adja vissza
+      public function taunlokListaja($conn){
+        $lista=array();
+        $sql = "SELECT id FROM ulesrend";
+        if($result=$conn->query($sql)){
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              
+            }
+          }
+        }
+      }
 }
-/*
     $tanulo = new Ulesrend;
-    $tanulo->set_user($row['id'], $conn);
-    $tanulo->set_user(10, $conn);
-
+    //$tanulo->set_user($row['id'], $conn);
+    //$tanulo->set_user(10, $conn);
+/*
     echo $tanulo->get_nev()." sora: ".$tanulo->get_sor();
     echo ", oszlopa: ".$tanulo->get_oszlop();
     echo ", felhasznaloja: ".$tanulo->get_felhasznalo();
