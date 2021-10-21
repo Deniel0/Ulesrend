@@ -1,7 +1,5 @@
 <?php
 
-    require "../db.inc.php";
-
 class Ulesrend{
 
   private $id;
@@ -33,20 +31,29 @@ class Ulesrend{
   }
   //Össze get metódus felépítése
   public function get_nev(){
-      return $this->nev; 
+      return $this->nev;
     }
     public function get_sor(){
-        return $this->nev; 
+        return $this->sor;
       }
       public function get_oszlop(){
-        return $this->nev; 
+        return $this->oszlop;
+      }
+      public function get_jelszo(){
+        return $this->jelszo;
+      }
+      public function get_felhasznalo(){
+        return $this->felhasznalo;
       }
 }
+/*
     $tanulo = new Ulesrend;
+    $tanulo->set_user($row['id'], $conn);
     $tanulo->set_user(10, $conn);
 
-    echo $tanulo->get_nev();
-    //echo $tanulo->get_sor();
-    //echo $tanulo->get_oszlop();
-
+    echo $tanulo->get_nev()." sora: ".$tanulo->get_sor();
+    echo ", oszlopa: ".$tanulo->get_oszlop();
+    echo ", felhasznaloja: ".$tanulo->get_felhasznalo();
+    echo ", jelszava: ".$tanulo->get_jelszo();
+*/
 ?>

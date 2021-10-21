@@ -1,9 +1,13 @@
 <?php
 session_start();
 require 'db.inc.php';
-if(!empty($_GET['logout'])){
+require 'model/ulesrend.php';
+
+$tanulo = new Ulesrend;
+
+/*if(!empty($_GET['logout'])){
   session_unset();
-}
+}*/
 if(isset($_POST['user']) and isset($_POST['pw'])){
   $loginError='';
   if(strlen($_POST['user']) == 0)$loginError .="Nem írtál be felhsználónevet<br>";
@@ -13,9 +17,10 @@ if(isset($_POST['user']) and isset($_POST['pw'])){
     if(!$result = $conn->query($sql)) echo $conn->error;
 if ($result->num_rows > 0) {
   if($row = $result->fetch_assoc()) {
-   if(md5($_POST['pw'])== $row['jelszo']){
-     $_SESSION['id']=$row['id'];
-     $_SESSION['nev']=$row['nev'];
+    $tanulo->set_user($row['id'], $conn);
+   if(md5($_POST['pw']) == $tanulo->get_jelszo()) {
+     $_SESSION['id'] = $row['id'];
+     $_SESSION['nev'] = $tanulo->get_nev();
      header('Location:ulesrend.php');
     exit();
     }
