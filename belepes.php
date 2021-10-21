@@ -1,8 +1,6 @@
 <?php
 session_start();
 require 'db.inc.php';
-
-//form feldolgozás
 if(!empty($_GET['logout'])){
   session_unset();
 }
@@ -33,10 +31,8 @@ elseif(isset($_POST['kilep'])){
 $title ="Belépés";
 if(!empty($_SESSION["id"])) $title="Kilépés";
 ?>
-
 <?php
 include 'htmlheader.inc.php';
-
 ?>
 <body>
     <?php
@@ -67,7 +63,6 @@ include 'htmlheader.inc.php';
 <?php
       }
 ?>
-
     </th>
   </tr>
     </table>

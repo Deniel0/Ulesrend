@@ -28,8 +28,6 @@ if ($result->num_rows > 0) {
     $hianyzok[] = $row['id'];
   }
 }
-
-
 $adminok=array();
 $sql = "SELECT id FROM adminok";
 if(!$result = $conn->query($sql)) echo $conn->error;
