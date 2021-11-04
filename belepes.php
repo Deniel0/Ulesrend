@@ -37,11 +37,11 @@ $title ="Belépés";
 if(!empty($_SESSION["id"])) $title="Kilépés";
 ?>
 <?php
-include 'htmlheader.inc.php';
+include 'includes/htmlheader.inc.php';
 ?>
 <body>
     <?php
-    include 'menu.inc.php';
+    include 'includes/menu.inc.php';
     ?>
   <table>
   <tr>

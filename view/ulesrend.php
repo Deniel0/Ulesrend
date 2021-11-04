@@ -1,51 +1,37 @@
-<?php
-include 'htmlheader.inc.php';
-?>
-	<body>
-		<?php
-		include 'menu.inc.php';
-		?>
-		<table>
-			<tr>
-				<th colspan="3">
-					<h2>Ülésrend</h2>
-				</th>
-				<th colspan="3">
-				<?php
+<table>
+	<tr>
+		<th colspan="3">
+			<h2>Ülésrend</h2>
+		</th>
+		<th colspan="3">
+	<?php
 				
-				if(!empty($_SESSION["id"])) {
-					if(in_array($_SESSION["id"], $adminok)) {
-						?>
-						<form action="ulesrend.php" method="post">
-						Hiányzó: 	<select name="hianyzo_id">
-									<?php
-
-									$result = tanLista($conn);
-
-									if ($result->num_rows > 0) {
-										while($row = $result->fetch_assoc()) {
-											if($row['nev'] and !in_array($row['id'], $hianyzok)) echo '<option value="'.$row['id'].'">'.$row['nev'].'</option>';
-										}
-									}
-									?>
-										
-									</select>
-							<br>
-						<input type="submit">
-						</form>						
-						<?php
+		if(!empty($_SESSION["id"])) {
+			if(in_array($_SESSION["id"], $adminok)) {
+	?>
+		<form action="ulesrend.php" method="post">
+			Hiányzó: 	<select name="hianyzo_id">
+	<?php
+        $result = tanLista($conn);
+            if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+					if($row['nev'] and !in_array($row['id'], $hianyzok)) echo '<option value="'.$row['id'].'">'.$row['nev'].'</option>';
 					}
-				}
-				?>
-				</th>
-			</tr>
-			
-				<?php
-
-				$result = tanLista($conn);
-
-				if ($result->num_rows > 0) {
-				// output data of each row
+					}
+	?>
+										
+		</select><br>
+		<input type="submit">
+	    </form>						
+	<?php
+		}
+		}
+	?>
+	    </th>
+	</tr>
+	<?php
+        $result = tanLista($conn);
+            if ($result->num_rows > 0) {
 				$sor = 0;
 				while($row = $result->fetch_assoc()) {
 					$tanulo->set_user($row['id'], $conn);
@@ -73,9 +59,6 @@ include 'htmlheader.inc.php';
 				else {
 					echo "0 results";
 				}
-				$conn->close();
-
-				?>
-		</table>
-	</body>
-</html>
+		$conn->close();
+	?>
+</table>

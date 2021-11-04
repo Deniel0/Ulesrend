@@ -1,12 +1,4 @@
 <?php
-
-session_start();
-
-require 'db.inc.php';
-require 'model/Ulesrend.php';
-$tanulo = new Ulesrend;
-require 'functions.inc.php';
-
 // form feldolgozása
 
 if(!empty($_POST["hianyzo_id"])) {
@@ -18,7 +10,7 @@ elseif(!empty($_GET['nem_hianyzo'])) {
 	$result = $conn->query($sql);	
 }
 
-//$hianyzok = getId('hianyzok', $conn);
+$hianyzok = getIds('hianyzok', $conn);
 
 $adminok = array(); // ebben leszek az adminok id-i felsorolva
 
@@ -36,4 +28,4 @@ if(!empty($_SESSION["id"])) $en = $_SESSION["id"];
 
 $tanar = 17;
 
-$title = "Ülésrend";
+include 'view/ulesrend.php';

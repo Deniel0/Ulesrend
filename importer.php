@@ -1,5 +1,5 @@
 <?php
-require 'db.inc.php';
+require 'includes/db.inc.php';
 ?>
 <?php
 $osztaly=array(
