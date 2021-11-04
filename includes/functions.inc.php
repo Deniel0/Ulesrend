@@ -1,10 +1,6 @@
 <?php
-function tanlista($conn){
-    $sql = "SELECT id, nev, sor, oszlop, jelszo, felhasznalo FROM ulesrend";
-    $result = $conn->query($sql);
-    return $result;
-  }
-  function getIds($tablanev, $conn) {
+
+function getIds($tablanev, $conn) {
     $tomb = array(); // ebben leszek azk id-k felsorolva
 
     $sql = "SELECT id FROM $tablanev";
@@ -17,4 +13,6 @@ function tanlista($conn){
     }
     return $tomb;
 }
+
+
 ?>
