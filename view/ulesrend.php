@@ -11,14 +11,15 @@
 	?>
 		<form action="ulesrend.php" method="post">
 			Hiányzó: 	<select name="hianyzo_id">
-	<?php
-        $result = tanLista($conn);
-            if ($result->num_rows > 0) {
-				while($row = $result->fetch_assoc()) {
-					if($row['nev'] and !in_array($row['id'], $hianyzok)) echo '<option value="'.$row['id'].'">'.$row['nev'].'</option>';
-					}
-					}
-	?>
+			<?php
+
+if ($tanuloIdk) {
+	foreach($tanuloIdk as $row) {
+		$tanulo->set_user($row, $conn);
+		if($tanulo->get_nev() and !in_array($row, $hianyzok)) echo '<option value="'.$row.'">'.$tanulo->get_nev().'</option>';
+	}
+}
+?>
 										
 		</select><br>
 		<input type="submit">
