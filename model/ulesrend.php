@@ -68,4 +68,43 @@ class Ulesrend{
     echo ", felhasznaloja: ".$tanulo->get_felhasznalo();
     echo ", jelszava: ".$tanulo->get_jelszo();
 */
+class admin{
+
+  private $id;
+  private $nev;
+  private $sor;
+  private $oszlop;
+  private $jelszo;
+  private $felhasznalo;
+
+  public function set_user($id, $conn){
+      //lekérdezés az adatbázisból (tesz\ulesrend)-->visszaadjuk
+    $sql = "SELECT id FROM adminok";
+    $sql .= " WHERE id = $id ";
+    $result = $conn->query($sql);
+    //return $result;
+    if ($conn->query($sql)){
+    if ($result->num_rows > 0){
+        $row=$result->fetch_assoc();
+        $this->id = $row['id'];
+    }
+}else{
+    echo "Error: " .$sql . "<br>" . $conn->error;
+}
+  }
+  /*public function get_nev(){
+      return $this->nev;
+    }
+      public function taunlokListaja($conn){
+        $lista=array();
+        $sql = "SELECT id FROM ulesrend";
+        if($result=$conn->query($sql)){
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $lista[] = $row['id'];
+            }
+          }
+        }
+      }*/
+}
 ?>
