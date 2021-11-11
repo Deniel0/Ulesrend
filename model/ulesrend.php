@@ -47,7 +47,7 @@ class Ulesrend{
         return $this->felhasznalo;
       }
       //tanulók id listáját adja vissza
-      public function taunlokListaja($conn){
+      public function tanulokListaja($conn){
         $lista=array();
         $sql = "SELECT id FROM ulesrend";
         if($result=$conn->query($sql)){
