@@ -1,40 +1,16 @@
 <?php
+  require '../includes/db.inc.php';
+  require 'kijeloltfelhasznalok.php';
+class admin extends kijeloltfelhasznalok{
 
-class admin{
-  private $id;
-
-  public function set_user($id, $conn){
-
-    $sql = "SELECT id FROM adminok WHERE id=$id";
-    $result = $conn->query($sql);
-        if ($conn->query($sql)){
-        if ($result->num_rows > 0){
-            $row=$result->fetch_assoc();
-            $this->id = $row['id'];
-        }else{
-            $sql = "INSERT INTO adminok ($id)";
-            if($result = $conn->query($sql)){
-                $this->id = $id;
-            }
-        }
-    }else{
-        echo "Error: " .$sql . "<br>" . $conn->error;
-    }
+  function __construct() {
+    $this->tablaNev = 'adminok';
   }
-  public function get_id(){
-      return $this->id;
-    }
-      public function adminokListaja($conn){
-        $lista=array();
-        $sql = "SELECT id FROM adminok";
-        if($result=$conn->query($sql)){
-          if($result->num_rows>0){
-            while($row=$result->fetch_assoc()){
-              $lista[] = $row['id'];
-            }
-          }
-        }return $lista;
-      }
 }
-    $tanulo = new Ulesrend;
+//Teszt:
+$admin = new admin();
+
+$admin->set_id(1, $conn);
+echo $admin->get_id();
+
 ?>

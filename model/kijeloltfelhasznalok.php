@@ -4,11 +4,7 @@ class kijeloltfelhasznalok{
   private $id;
   protected $tablaNev;
 
-  function __construct($tablaNev) {
-    $this->tablaNev = $tablaNev;
-  }
-
-  protected function set_user($id, $conn){
+  public function set_id($id, $conn){
 
     $sql = "SELECT id FROM $this->tablaNev WHERE id=$id";
     $result = $conn->query($sql);
@@ -17,7 +13,7 @@ class kijeloltfelhasznalok{
             $row=$result->fetch_assoc();
             $this->id = $row['id'];
         }else{
-            $sql = "INSERT INTO $this->tablaNev ($id)";
+            $sql = "INSERT INTO $this->tablaNev VALUES ($id)";
             if($result = $conn->query($sql)){
                 $this->id = $id;
             }
@@ -26,10 +22,10 @@ class kijeloltfelhasznalok{
         echo "Error: " .$sql . "<br>" . $conn->error;
     }
   }
-  protected function get_id(){
+  public function get_id(){
       return $this->id;
     }
-      protected function lista($conn){
+      public function lista($conn){
         $lista = array();
         $sql = "SELECT id FROM $this->tablaNev";
         if($result=$conn->query($sql)){
@@ -41,5 +37,5 @@ class kijeloltfelhasznalok{
         }return $lista;
       }
 }
-    $tanulo = new Ulesrend;
+ //$admin = new admin();
 ?>
