@@ -56,7 +56,7 @@ class Ulesrend{
               $lista[] = $row['id'];
             }
           }
-        }
+        }return $lista;
       }
 }
     $tanulo = new Ulesrend;
