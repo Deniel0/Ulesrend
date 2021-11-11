@@ -8,8 +8,8 @@ class hianyzo extends kijeloltfelhasznalok{
     $this->tablaNev = 'hianyzok';
   }
   //remove_id elkészítése
-  public function remove_id($id){
-    $sql = "DELETE FROM hianyzok WHERE id =".$_GET['nem_hianyzo'];
+  public function remove_id($id, $conn){
+    $sql = "DELETE FROM hianyzok WHERE id = $id";
 	$result = $conn->query($sql);	
   }
 }
