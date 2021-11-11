@@ -12,5 +12,4 @@ class hianyzo extends kijeloltfelhasznalok{
 	$result = $conn->query($sql);	
   }
 }
-
 ?>
