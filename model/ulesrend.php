@@ -59,31 +59,5 @@ class Ulesrend{
         }return $lista;
       }
 }
-    $tanulo = new Ulesrend;
-
-class admin{
-
-  private $id;
-  private $nev;
-  private $sor;
-  private $oszlop;
-  private $jelszo;
-  private $felhasznalo;
-
-  public function set_user($id, $conn){
-      //lekérdezés az adatbázisból (tesz\ulesrend)-->visszaadjuk
-    $sql = "SELECT id FROM adminok";
-    $sql .= " WHERE id = $id ";
-    $result = $conn->query($sql);
-    //return $result;
-    if ($conn->query($sql)){
-    if ($result->num_rows > 0){
-        $row=$result->fetch_assoc();
-        $this->id = $row['id'];
-    }
-}else{
-    echo "Error: " .$sql . "<br>" . $conn->error;
-}
-  }
-}
+    //$tanulo = new Ulesrend;
 ?>

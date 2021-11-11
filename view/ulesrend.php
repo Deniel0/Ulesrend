@@ -21,7 +21,6 @@
 				}
 			}
 			?>
-				
 					</select><br>
 		<input type="submit">
 		</form>						
