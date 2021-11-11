@@ -4,6 +4,10 @@ class kijeloltfelhasznalok{
   private $id;
   protected $tablaNev;
 
+  function __construct($tablaNev) {
+    $this->tablaNev = $tablaNev;
+  }
+
   protected function set_user($id, $conn){
 
     $sql = "SELECT id FROM $this->tablaNev WHERE id=$id";
