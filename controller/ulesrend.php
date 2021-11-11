@@ -1,5 +1,6 @@
 <?php
-
+require 'model/hianyzo.php';
+require 'model/admin.php';
 $hianyzo = new hianyzo();
 
 if(!empty($_POST["hianyzo_id"])) {
