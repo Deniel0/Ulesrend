@@ -9,7 +9,7 @@ class hianyzo extends kijeloltfelhasznalok{
   }
   public function remove_id($id, $conn){
     $sql = "DELETE FROM hianyzok WHERE id = $id";
-	$result = $conn->query($sql);	
+	$result = $conn->query($sql);
   }
 }
 ?>
