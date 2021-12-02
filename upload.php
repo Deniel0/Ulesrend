@@ -5,7 +5,7 @@ $errors = array();
 
 if(isset($_FILES["fileToUpload"])){
   //sprint_r($_FILES["fileToUpload"]);
-  $target_dir = "uploads/";
+  $target_dir = "aauploads/";
   
   $allowed_filetypes=array('image/png', 'image/jpg', 'image/jpeg');
 
@@ -13,17 +13,19 @@ if(isset($_FILES["fileToUpload"])){
     $target_file = $target_dir . basename($name);
 
     if ($_FILES["fileToUpload"]["size"][$key] > 102400) {
-      $errors[$key][]="\nA $name túl nagy, 100KB-nál nem lehet nagyobb.";
+      $errors[$key][]="<br>A $name túl nagy, 100KB-nál nem lehet nagyobb.";
     }
     if ($_FILES["fileToUpload"]["size"][$key] < 1024) {
-      $errors[$key][]="\nA $name túl kicsi, 1KB-nál nem lehet kisebb.";
+      $errors[$key][]="<br>A $name túl kicsi, 1KB-nál nem lehet kisebb.";
     }
     if (!in_array($_FILES["fileToUpload"]["type"][$key], $allowed_filetypes)) {
-      $errors[$key][]="\nA $name nem jpg vagy png.";
+      $errors[$key][]="<br>A $name nem jpg vagy png.";
     }
     if (!isset($errors[$key])){
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key], $target_file)) {
+      if (@move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key], $target_file)) {
         $i++;
+      }else{
+        $errors[$key][]="Hiba történt a <b>$name</b> file mentésekor.";
       }
     }
   }
@@ -42,8 +44,8 @@ if($errors){
 }
 ?>
 <form action="upload.php" method="post" enctype="multipart/form-data">
-  Select image to upload:
-  <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
+<br>Select image to upload:<br><br>
+  <input type="file" name="fileToUpload[]" id="fileToUpload" multiple><br><br>
   <input type="submit" value="Upload" name="submit">
 </form>
 
