@@ -16,6 +16,4 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
   <input type="file" name="fileToUpload" id="fileToUpload">
   <input type="submit" value="Upload Image" name="submit">
 </form>
-
-
 </body>
