@@ -1,18 +1,20 @@
 <?php
-if(isset($_FILES["fileToUpload1"])){
+if(isset($_FILES["fileToUpload"])){
+  print_r($_FILES["fileToUpload"]);
   $target_dir = "uploads/";
-  $target_file = $target_dir . basename($_FILES["fileToUpload1"]["name"]);
+  $i = 0;
+  $errors = array();
 
-if (move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file)) {
-  echo "The file has been uploaded.";
-  }
-}
-if(isset($_FILES["fileToUpload2"])){
-  $target_dir = "uploads/";
-  $target_file = $target_dir . basename($_FILES["fileToUpload2"]["name"]);
+  foreach($_FILES["fileToUpload"]["name"] as $key => $name){
+    $target_file = $target_dir . basename($name);
 
-if (move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file)) {
-  echo "\nThe file has been uploaded.";
+    if ($_FILES["fileToUpload"]["size"][$key] > 1002400) {
+      $errors[0][]="$name file is too large.";
+      $uploadOk = 0;
+    }
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key], $target_file)) {
+      $i++;
+    }
   }
 }
 ?>
@@ -20,9 +22,9 @@ if (move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file)) {
 <body>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
-  Select image to upload: <br>
-  <input type="file" name="fileToUpload1" id="fileToUpload"><br>
-  <input type="file" name="fileToUpload2" id="fileToUpload"><br>
-  <input type="submit" value="Upload Image" name="submit">
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload" multiple>
+  <input type="submit" value="Upload" name="submit">
 </form>
+
 </body>
