@@ -30,7 +30,6 @@ if(isset($_FILES["fileToUpload"])){
   }
 }
 ?>
-
 <body>
 <?php
 if($i > 0)echo "$i fájl feltöltve";
@@ -42,9 +41,9 @@ if($errors){
   }
 }
 ?>
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="upload_2.php" method="post" enctype="multipart/form-data">
 <br>Select image to upload:<br><br>
-  <input type="file" name="fileToUpload[]" id="fileToUpload" multiple><br><br>
+  <input type="file" name="fileToUpload[]" id="fileToUpload"><br><br>
   <input type="submit" value="Upload" name="submit">
 </form>
 
