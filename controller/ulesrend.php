@@ -9,7 +9,18 @@ if(!empty($_POST["hianyzo_id"])) {
 elseif(!empty($_GET['nem_hianyzo'])) {
 	$hianyzo->remove_id($_GET['nem_hianyzo'],$conn);
 }
-
+if(isset($_POST["profilkepid"])) {
+	$target_dir = "uploads/";
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	$target_file = $target_dir . basename($_POST["profilkepid"].".".$imageFileType);
+	if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+		echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded.";
+	  } else {
+		echo "Sorry, there was an error uploading your file.";
+	  }
+  }
 $hianyzok = $hianyzo->lista($conn);
 
 $admin = new Admin();
