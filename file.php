@@ -24,4 +24,8 @@ fclose($myfile);
 
 unlink("oldfile.txt");
 
+//$sql = "LOAD DATA LOCAL INFILE 'telepulesek.txt'";
+//$sql = "INTO TABLE foo COLUMNS TERMINATED BY '\t'";
+
+
 ?>
