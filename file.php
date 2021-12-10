@@ -14,4 +14,14 @@ $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
 echo fread($myfile,filesize("newfile.txt"));
 fclose($myfile);
 
+rename("newfile.txt","oldfile.txt");
+
+echo copy("oldfile.txt","copyfile.txt");
+
+$myfile = fopen("copyfile.txt", "r") or die("Unable to open file!");
+echo fread($myfile,filesize("copyfile.txt"));
+fclose($myfile);
+
+unlink("oldfile.txt");
+
 ?>
