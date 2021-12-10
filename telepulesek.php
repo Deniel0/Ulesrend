@@ -6,7 +6,6 @@ $conn = new mysqli('localhost','root','','teszt');
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$i=1;
 $myfile=fopen("telepulesek.txt","r") or die("Unable to open file!");
 while (!feof($myfile)) 
 {
@@ -17,12 +16,7 @@ while (!feof($myfile))
  
 $sql = "INSERT INTO település(iranyitoszam, telepules) VALUES (".$postcode.",'".$town."')";
 
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-$i++;
+$conn->query($sql);
 }
 
 $conn->close();
