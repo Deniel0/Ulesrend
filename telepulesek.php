@@ -1,4 +1,5 @@
 <?php
+
 set_time_limit(500);
 // Create connection
 $conn = new mysqli('localhost','root','','teszt');
