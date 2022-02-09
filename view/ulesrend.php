@@ -64,7 +64,6 @@
 					echo "<img src=".$filepath." height=100 width=150 />"; //upload
 					if(in_array($_SESSION["id"], $adminok)) {
 						if(in_array($row, $hianyzok)) echo '<br><a href="index.php?page=ulesrend&nem_hianyzo='.$row.'">Nem hiányzó</a>';
-						
 					}
 				}
 				echo "</td>";
